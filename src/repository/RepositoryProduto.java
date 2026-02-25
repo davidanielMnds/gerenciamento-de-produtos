@@ -14,7 +14,7 @@ public class RepositoryProduto {
         ID = map.size();
     }
 //gets
-    public HashMap<String, Produto> getMap() { return map;}
+    public HashMap<String, Produto> getMap() { return new HashMap<>(map);}
     public int getID() { return ID;}
 
 //Produto existe
