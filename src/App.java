@@ -16,7 +16,10 @@ public class App {
 
                     case 1:
                         String nome = InputHelper.setString(sc, "Digite o nome: ");
-                        if (service.produtoExiste(nome)) {continue;}
+                        if (service.produtoExiste(nome)) {
+                            Menu.msgln("Um produto com o mesmo nome já existe, tente outro.");
+                            continue;
+                        }
                         int quantidade = InputHelper.setInt(sc, "Digite a quantidade disponível do item: ");
                         double valor = InputHelper.setDouble(sc, "Digite o preço do produto: ");
                         service.novoProduto(nome, quantidade, valor);
@@ -25,7 +28,11 @@ public class App {
 
                     case 2:
                         String chave = InputHelper.setChave(sc, "Digite o ID do produto: ");
-                        service.removeProduto(chave);
+                        if (service.removeProduto(chave)) {
+                            Menu.msgln("Produto removido com sucesso");
+                            continue;
+                        }
+                        Menu.msgln("O produto não foi encontrado.");
                     break;
 
                     case 3:

@@ -1,7 +1,6 @@
 package service;
 import java.util.HashMap;
 import model.Produto;
-import ui.Menu;
 import repository.RepositoryProduto;
 
 public class ServiceProduto {
@@ -14,11 +13,7 @@ public class ServiceProduto {
     
 //Produto Existe
     public boolean produtoExiste(String nome) {
-        if (repository.produtoExiste(nome)) {
-            Menu.msgln("Um produto com o mesmo nome já existe, tente outro.");
-            return true;
-        }
-        return false;
+        return repository.produtoExiste(nome);
     }
 //pesquisa por id
     public boolean servicePesquisaID(String chave) {
@@ -30,13 +25,12 @@ public class ServiceProduto {
         repository.addProduto(repository.setID(), new Produto(nome, quantidade, valor));
     }
 //Excluir produto
-    public void removeProduto(String chave) {
-        if(repository.getMap().containsKey(chave)) {
+    public boolean removeProduto(String chave) {
+        if(repository.pesquisaID(chave)) {
             repository.removeProduto(chave);
-            Menu.msgln("Produto removido com sucesso");
-            return;
+            return true;
         }
-        Menu.msgln("Não existe um produto com esta chave");
+        return false;
     }
     
 
