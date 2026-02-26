@@ -1,0 +1,12 @@
+# Pasta de arquivos compilados
+bin/
+
+# Arquivos compilados Java
+*.class
+
+# Logs
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
