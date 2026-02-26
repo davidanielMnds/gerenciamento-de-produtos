@@ -4,6 +4,7 @@ import java.util.Scanner;
 import ui.Menu;
 
 public class InputHelper {
+    
     public static int setInt(Scanner sc, String txt) {
         while(true) {
             try {

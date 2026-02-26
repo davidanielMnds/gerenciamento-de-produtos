@@ -32,7 +32,37 @@ public class ServiceProduto {
         }
         return false;
     }
-
-    
-
+//Mudar nome do produto
+    public boolean mudarNome(String novoNome, Produto produto) {
+        if(produtoExiste(novoNome)) {
+            try {
+                repository.mudarNome(novoNome, produto);
+                return true;
+            } catch (Exception e) {
+                System.out.println("Erro inesperado: " + e.getMessage());
+            }
+        }
+        return false;
+    }
+//Mudar quantidade do produto
+    public boolean mudarQuantidade(int novaQuantidade, Produto produto) {
+        try {
+            repository.mudarQuantidade(novaQuantidade, produto);
+            return true;    
+        } catch (Exception e) {
+            System.out.println("\nErro inesperado: " + e.getMessage());
+        }
+        return false;
+        
+    }
+//Mudar valor do produto
+    public boolean mudarValor(double novoValor, Produto produto) {
+        try{
+            repository.mudarValor(novoValor, produto);
+            return true;
+        } catch (Exception e) {
+            System.out.println("\nErro inesperado: " + e.getMessage());
+        }
+        return false;
+    }
 }

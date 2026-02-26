@@ -8,4 +8,7 @@ public class Menu {
     public static String getMenu() {
         return("\n|1 adicionar |2 remover |3 pesquisar |4 ver todos |5 editar produto|6 sair" + "\nDigite: ");
     }
+    public static String getEditarMenu() {
+        return("\n|1 mudar nome |2 mudar quantidade |3 mudar valor |4 voltar");
+    }
 }
