@@ -31,16 +31,28 @@ public class RepositoryProduto {
         return map.containsKey(chave);
     }
 
-    //Set ID
+//Set ID
     public String setID(){ ID+=1; return "ID_" + ID;}
 
-    //Adicionar produto
+//Adicionar produto
     public void addProduto(String chave, Produto m) {
         map.put(chave, m);
     }
 
-    //Remover Produto
+//Remover Produto
     public void removeProduto(String chave) {
         map.remove(chave);
+    }
+//Mudar nome do produto
+    public void mudarNome(String novoNome, Produto produto) {
+        produto.setNome(novoNome);
+    }
+//Mudar quantidade do produto
+    public void mudarQuantidade(int novaQuantidade, Produto produto) {
+        produto.setQuantidade(novaQuantidade);
+    }
+//Mudar preço do produto
+    public void mudarValor(int novoValor, Produto produto) {
+        produto.setValor(novoValor);
     }
 }

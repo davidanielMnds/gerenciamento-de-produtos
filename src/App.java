@@ -9,7 +9,7 @@ public class App {
         ServiceProduto service = new ServiceProduto();
 
         int escolha = 0;
-        while (escolha != 5) {
+        while (escolha != 6) {
             try {
                 escolha = InputHelper.setInt(sc, Menu.getMenu());
                 switch(escolha) {
@@ -48,7 +48,7 @@ public class App {
                         MenuProdutos.getDados(service.listarProdutos());
                     break;
 
-                    case 5:
+                    case 6:
                         Menu.msgln("Saindo...");
                     break;
 
