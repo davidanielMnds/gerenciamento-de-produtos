@@ -81,10 +81,10 @@ public class App {
                         nome = InputHelper.setString(sc, "Digite o nome do produto: ");
                         if (service.produtoExiste(nome)) {
                             String mudarNome = InputHelper.setString(sc, "Digite o novo nome: ");
-                            Produto produto = service.getProduto(nome);
-                            if(produto!=null) {
-                                if(service.mudarNome(nome, mudarNome,  produto)) {
-                                    Menu.msgln("Nome de produto mudado para: " + produto.getNome());
+                            Produto produtoNome = service.getProduto(nome);
+                            if(produtoNome!=null) {
+                                if(service.mudarNome(nome, mudarNome,  produtoNome)) {
+                                    Menu.msgln("Nome de produto mudado para: " + produtoNome.getNome());
                                     continue;
                                 }
                             }
