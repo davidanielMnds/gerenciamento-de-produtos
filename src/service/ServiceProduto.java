@@ -53,7 +53,6 @@ public class ServiceProduto {
             System.out.println("\nErro inesperado: " + e.getMessage());
         }
         return false;
-        
     }
 //Mudar valor do produto
     public boolean mudarValor(double novoValor, Produto produto) {
