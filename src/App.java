@@ -94,14 +94,27 @@ public class App {
     //MUDAR QUANTIDADE
                     case 2:
                         nome = InputHelper.setString(sc, "Digite o nome do produto: ");
-                        Produto produto = service.getProduto(nome);
-                        if (produto!=null) {
-                            int novaQuantidade = InputHelper.setInt(sc, "Digite a nova quantidade");
-                            if(service.mudarQuantidade(novaQuantidade, produto)) {
-                                Menu.msgln("A quantidade do produto foi atualizada para: " + produto.getQuantidade());
+                        Produto produtoQuantidade = service.getProduto(nome);
+                        if (produtoQuantidade!=null) {
+                            int novaQuantidade = InputHelper.setInt(sc, "Digite a nova quantidade: ");
+                            if(service.mudarQuantidade(novaQuantidade, produtoQuantidade)) {
+                                Menu.msgln("A quantidade do produto foi atualizada para: " + produtoQuantidade.getQuantidade());
                                 continue;
                             }
                             
+                        }
+                        Menu.msgln("Produto não encontrado.");
+                    break;
+    //MUDAR VALOR   
+                    case 3:
+                        nome = InputHelper.setString(sc, "Digite o nome do produto: ");
+                        Produto produtoValor = service.getProduto(nome);
+                        if (produtoValor!=null) {
+                            double novoValor = InputHelper.setDouble(sc, "Digite o novo valor: ");
+                            if(service.mudarValor(novoValor, produtoValor)) {
+                                Menu.msgln("O valor do produto foi atualizada para: " + produtoValor.getValor());
+                                continue;
+                            }
                         }
                         Menu.msgln("Produto não encontrado.");
                     break;
