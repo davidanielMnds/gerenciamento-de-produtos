@@ -1,15 +1,16 @@
 import java.util.Scanner;
+import model.Produto;
 import service.ServiceProduto;
 import ui.Menu;
 import ui.MenuProdutos;
 import util.InputHelper;
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in).useLocale(java.util.Locale.US);
+        Scanner sc = new Scanner(System.in, "UTF-8").useLocale(java.util.Locale.US);
         ServiceProduto service = new ServiceProduto();
 
         int escolha = 0;
-        while (escolha != 5) {
+        while (escolha != 6) {
             try {
                 escolha = InputHelper.setInt(sc, Menu.getMenu());
                 switch(escolha) {
@@ -49,9 +50,13 @@ public class App {
                     break;
 
                     case 5:
-                        Menu.msgln("Saindo...");
+                        menuEditar(sc, service);
                     break;
 
+                    case 6:
+                        Menu.msgln("Saindo...");
+                    break;
+                        
                     default: Menu.msgln("Digite uma escolha válida");
 
                 }
@@ -61,5 +66,49 @@ public class App {
             }
         }
         sc.close();
+    }
+
+    public static void menuEditar(Scanner sc, ServiceProduto service) {
+        String nome=null;
+        int escolhaEdit = 0;
+        while (escolhaEdit !=4) {
+            try {
+                escolhaEdit = InputHelper.setInt(sc, Menu.getEditarMenu());
+
+                switch (escolhaEdit) {
+    //MUDAR NOME
+                    case 1:
+                        nome = InputHelper.setString(sc, "Digite o nome do produto: ");
+                        if (service.produtoExiste(nome)) {
+                            String mudarNome = InputHelper.setString(sc, "Digite o novo nome: ");
+                            Produto produto = service.getProduto(nome);
+                            if(produto!=null) {
+                                if(service.mudarNome(nome, mudarNome,  produto)) {
+                                    Menu.msgln("Nome de produto mudado para: " + produto.getNome());
+                                    continue;
+                                }
+                            }
+                        }
+                        Menu.msgln("O produto não foi encontrado");
+                    break;
+    //MUDAR QUANTIDADE
+                    case 2:
+                        nome = InputHelper.setString(sc, "Digite o nome do produto: ");
+                        Produto produto = service.getProduto(nome);
+                        if (produto!=null) {
+                            int novaQuantidade = InputHelper.setInt(sc, "Digite a nova quantidade");
+                            if(service.mudarQuantidade(novaQuantidade, produto)) {
+                                Menu.msgln("A quantidade do produto foi atualizada para: " + produto.getQuantidade());
+                                continue;
+                            }
+                            
+                        }
+                        Menu.msgln("Produto não encontrado.");
+                    break;
+                }
+            } catch (Exception e) {
+                Menu.msgln("Erro inesperado: " + e.getMessage());
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ public class RepositoryProduto {
     public HashMap<String, Produto> getMap() { return new HashMap<>(map);}
     public int getID() { return ID;}
 
+
 //Produto existe
     public boolean produtoExiste(String nome) {
         for (Map.Entry<String, Produto> entrada : map.entrySet()) {
@@ -31,16 +32,42 @@ public class RepositoryProduto {
         return map.containsKey(chave);
     }
 
-    //Set ID
+//Retornar produto por nome
+    public Produto getProdutoNome(String nome) {
+        for(Map.Entry<String, Produto> entrada : map.entrySet()) {
+            if(entrada.getValue().getNome().equalsIgnoreCase(nome)) {
+                return entrada.getValue();
+            }
+        }
+        return null;
+    }
+//Retornar produto por id
+    public Produto getProdutoID(String chave) {
+        return map.get(chave);
+    }
+
+//Set ID
     public String setID(){ ID+=1; return "ID_" + ID;}
 
-    //Adicionar produto
+//Adicionar produto
     public void addProduto(String chave, Produto m) {
         map.put(chave, m);
     }
 
-    //Remover Produto
+//Remover Produto
     public void removeProduto(String chave) {
         map.remove(chave);
+    }
+//Mudar nome do produto
+    public void mudarNome(String novoNome, Produto produto) {
+        produto.setNome(novoNome);
+    }
+//Mudar quantidade do produto
+    public void mudarQuantidade(int novaQuantidade, Produto produto) {
+        produto.setQuantidade(novaQuantidade);
+    }
+//Mudar preço do produto
+    public void mudarValor(double novoValor, Produto produto) {
+        produto.setValor(novoValor);
     }
 }
