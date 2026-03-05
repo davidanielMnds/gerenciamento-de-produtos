@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 import model.Produto;
 import service.ServiceProduto;
@@ -50,7 +51,7 @@ public class App {
                     break;
 
                     case 5:
-                        menuEditar(sc, service);
+                        menuEditar(sc, service, service.listarProdutos());
                     break;
 
                     case 6:
@@ -68,11 +69,12 @@ public class App {
         sc.close();
     }
 
-    public static void menuEditar(Scanner sc, ServiceProduto service) {
+    public static void menuEditar(Scanner sc, ServiceProduto service, HashMap<String, Produto> map) {
         String nome=null;
         int escolhaEdit = 0;
         while (escolhaEdit !=4) {
             try {
+                MenuProdutos.getDados(map);
                 escolhaEdit = InputHelper.setInt(sc, Menu.getEditarMenu());
 
                 switch (escolhaEdit) {

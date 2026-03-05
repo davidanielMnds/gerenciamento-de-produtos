@@ -2,6 +2,7 @@ package service;
 import java.util.HashMap;
 import model.Produto;
 import repository.RepositoryProduto;
+import ui.Menu;
 
 public class ServiceProduto {
     private RepositoryProduto repository;
@@ -39,7 +40,7 @@ public class ServiceProduto {
                 repository.mudarNome(novoNome, produto);
                 return true;
             } catch (Exception e) {
-                System.out.println("Erro inesperado: " + e.getMessage());
+                Menu.msgln("Erro inesperado: " + e.getMessage());
             }
         }
         return false;
@@ -50,7 +51,7 @@ public class ServiceProduto {
             repository.mudarQuantidade(novaQuantidade, produto);
             return true;    
         } catch (Exception e) {
-            System.out.println("\nErro inesperado: " + e.getMessage());
+            Menu.msgln("\nErro inesperado: " + e.getMessage());
         }
         return false;
     }
@@ -60,7 +61,7 @@ public class ServiceProduto {
             repository.mudarValor(novoValor, produto);
             return true;
         } catch (Exception e) {
-            System.out.println("\nErro inesperado: " + e.getMessage());
+            Menu.msgln("\nErro inesperado: " + e.getMessage());
         }
         return false;
     }
