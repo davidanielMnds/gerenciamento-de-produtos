@@ -51,7 +51,7 @@ public class App {
                     break;
 
                     case 5:
-                        menuEditar(sc, service, service.listarProdutos());
+                        menuEditar(sc, service);
                     break;
 
                     case 6:
@@ -69,12 +69,12 @@ public class App {
         sc.close();
     }
 
-    public static void menuEditar(Scanner sc, ServiceProduto service, HashMap<String, Produto> map) {
+    public static void menuEditar(Scanner sc, ServiceProduto service) {
         String nome=null;
         int escolhaEdit = 0;
         while (escolhaEdit !=4) {
             try {
-                MenuProdutos.getDados(map);
+                MenuProdutos.getDados(service.listarProdutos());
                 escolhaEdit = InputHelper.setInt(sc, Menu.getEditarMenu());
 
                 switch (escolhaEdit) {
